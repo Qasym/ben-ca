@@ -10,6 +10,11 @@ QUESTS_DB_PORT = 27002
 USERS_DB = users_db
 USERS_DB_PORT = 27003
 
+USER_REWARDS_DB = user_rewards_db
+USER_REWARDS_DB_PORT = 27004
+
+activate_all_databases: prepare_quests_db prepare_rewards_db prepare_users_db prepare_user_rewards_db
+
 prepare_users_db:
 	docker run -d -p $(USERS_DB_PORT):$(MONGODB_DEFAULT_PORT) --name $(USERS_DB) $(MONGODB_IMAGE)
 
@@ -18,6 +23,9 @@ prepare_quests_db:
 
 prepare_rewards_db:
 	docker run -d -p $(REWARDS_DB_PORT):$(MONGODB_DEFAULT_PORT) --name $(REWARDS_DB) $(MONGODB_IMAGE)
+
+prepare_user_rewards_db:
+	docker run -d -p $(USER_REWARDS_DB_PORT):$(MONGODB_DEFAULT_PORT) --name $(USER_REWARDS_DB) $(MONGODB_IMAGE)
 
 clean:
 	docker stop $(REWARDS_DB) $(QUESTS_DB) $(USERS_DB)
