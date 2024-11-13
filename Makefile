@@ -29,7 +29,7 @@ activate_microservices:
 activate_all_databases: prepare_quests_db prepare_rewards_db prepare_users_db prepare_user_rewards_db prepare_api_gateway
 
 prepare_api_gateway:
-	# remove --network="host" is linux only, remove it on windows/macos
+	# --network="host" is linux only, remove it on windows/macos
 	docker run -d --name $(NGINX) -p 80:80 -v ./nginx.conf:/etc/nginx/nginx.conf:ro --network="host" $(NGINX_IMAGE)
 
 prepare_users_db:
