@@ -1,4 +1,4 @@
-MONGODB_IMAGE = mongodb/mongodb-community-server:7.0.14
+MONGODB_IMAGE = mongodb/mongodb-community-server:7.0.14-ubi8
 MONGODB_DEFAULT_PORT = 27017
 
 NGINX_IMAGE = nginx:1.27.2-alpine-slim
