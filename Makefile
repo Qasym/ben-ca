@@ -22,9 +22,9 @@ USER_REWARDS_DB_PORT = 27004
 all: activate_all_databases activate_microservices
 
 activate_microservices:
-	java -jar $(USERS_SERVICE) &
-	java -jar $(REWARDS_SERVICE) &
-	java -jar $(QUESTS_SERVICE) &
+	java -jar ./java-env/$(USERS_SERVICE) &
+	java -jar ./java-env/$(REWARDS_SERVICE) &
+	java -jar ./java-env/$(QUESTS_SERVICE) &
 
 activate_all_databases: prepare_quests_db prepare_rewards_db prepare_users_db prepare_user_rewards_db prepare_api_gateway
 
